@@ -1,4 +1,8 @@
+import doSearch from '../actions/do-search.js';
+
+
 const initialState = {
+    searchTerm: '',
     artistSearchResults: [],
     loadingResults: false
 };
@@ -12,6 +16,13 @@ export default function AppReducer(currentState, action) {
   }
 
   switch (action.type) {
+
+    case 'UPDATE_PATH_QUERY':
+        console.log('REDUCER: ', action.history);
+        action.history.push(`/search-results?q=${action.searchTerm}`);
+        return Object.assign({}, currentState, {
+            searchTerm: action.searchTerm
+        });
 
     case 'GO_TO_RESULTS_PAGE':
         return currentState;

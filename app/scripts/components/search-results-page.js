@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import container from '../containers/all.js';
 import doSearch from '../actions/do-search.js';
 import ArtistResult from './artist-result.js';
+import SearchResultsContainer from './search-results-container.js';
 
 class SearchResultsPage extends React.Component {
     constructor(props) {
@@ -11,15 +12,22 @@ class SearchResultsPage extends React.Component {
         this.search = this.search.bind(this);
     }
 
-    search() {
-        let searchTerm = this.props.location.search;
-        searchTerm = searchTerm.slice(3, searchTerm.length);
-        console.log('search term in path', searchTerm);
+    search(searchTerm) {
+
         this.props.dispatch(doSearch(searchTerm));
     }
 
-    componentDidMount() {
-        this.search();
+    componentWillMount() {
+        let searchTerm = this.props.location.search;
+        searchTerm = searchTerm.slice(3, searchTerm.length);
+        this.search(searchTerm);
+    }
+
+    componentWillUpdate(nextProps) {
+        let searchTerm = nextProps.location.search;
+        searchTerm = searchTerm.slice(3, searchTerm.length);
+        if (this.props.searchTerm !== nextProps.searchTerm) this.search(searchTerm);
+
     }
 
     render() {

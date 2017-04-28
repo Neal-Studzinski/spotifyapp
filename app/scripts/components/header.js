@@ -13,11 +13,15 @@ class Header extends React.Component {
 
     handleSearchClick(history) {
         if (this.refs.inputSearch.value) {
-            this.props.dispatch(doSearch(this.refs.inputSearch.value, history));
-            let searchParameters = this.refs.inputSearch.value.split(' ').join('+');
-            history.push(`/search-results?q=$[searchParameters]`);
-        }
+            console.log('BUTTON CLICK: ', history);
+            let searchTerm = this.refs.inputSearch.value.split(' ').join('+');
+            this.props.dispatch ({
+                type:'UPDATE_PATH_QUERY',
+                searchTerm: searchTerm,
+                history: history
+            });
     }
+}
 
     submitButton({history}) {
         return (
@@ -34,6 +38,18 @@ class Header extends React.Component {
             </button>
         );
     }
+
+    headingClickable({history}) {
+        return (
+            <h1
+                className='page-heading'
+                onClick={() => history.push('/')}
+            >
+            Artist Voting
+            </h1>
+        );
+    }
+    
 
     render() {
         return (
