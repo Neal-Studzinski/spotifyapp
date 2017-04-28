@@ -1,14 +1,27 @@
-export default function AppReducer(state, action) {
-  if (state === undefined) {
-    return {};
+const initialState = {
+    artistSearchResults: [],
+    loadingResults: false
+};
+
+
+
+
+export default function AppReducer(currentState, action) {
+  if (currentState === undefined) {
+    return initialState;
   }
 
   switch (action.type) {
-    case "TEST_REDUCER":
-      // DELETE OR CHANGE ME: I AM JUST AN EXAMPLE
-      return Object.assign({}, state, { newData: action.data });
+
+    case 'GO_TO_RESULTS_PAGE':
+        return currentState;
+
+    case 'RETURN_ARTISTS':
+        return Object.assign({}, currentState, {
+            artistSearchResults: action.artists
+        });
   }
 
   console.log("Unhandled State!");
-  return state;
+  return currentState;
 }
