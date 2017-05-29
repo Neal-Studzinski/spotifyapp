@@ -3,7 +3,7 @@ import doSearch from "../actions/do-search.js";
 const initialState = {
     searchTerm: "",
     artistSearchResults: [],
-    loadingResults: false
+    votes: {}
 };
 
 export default function AppReducer(currentState, action) {
@@ -13,12 +13,10 @@ export default function AppReducer(currentState, action) {
 
     switch (action.type) {
         case "LOGGED_IN":
-            console.log("LOGGED_IN");
-            console.log("action.usertoken", action.usertoken);
             var newState = {
                 usertoken: action.usertoken
             };
-            return Object.assign({}, state, newState);
+            return Object.assign({}, currentState, newState);
 
         case "UPDATE_PATH_QUERY":
             console.log("REDUCER: ", action.history);
@@ -27,13 +25,17 @@ export default function AppReducer(currentState, action) {
                 searchTerm: action.searchTerm
             });
 
-        case "GO_TO_RESULTS_PAGE":
-            return currentState;
-
         case "RETURN_ARTISTS":
             return Object.assign({}, currentState, {
                 artistSearchResults: action.artists
             });
+
+        case "RETURN_VOTES":
+            console.log(action.votes);
+            newState = {
+                //votes: action.votes
+            };
+            return Object.assign({}, currentState, newState);
     }
 
     console.log("Unhandled State!");

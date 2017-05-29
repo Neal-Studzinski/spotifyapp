@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import container from '../containers/all.js';
-import doSearch from '../actions/do-search.js';
-import ArtistResult from './artist-result.js';
-import SearchResultsContainer from './search-results-container.js';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import container from "../containers/all.js";
+import doSearch from "../actions/do-search.js";
+import ArtistResult from "./artist-result.js";
+import SearchResultsContainer from "./search-results-container.js";
 
 class SearchResultsPage extends React.Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class SearchResultsPage extends React.Component {
     }
 
     search(searchTerm) {
-
         this.props.dispatch(doSearch(searchTerm));
     }
 
@@ -26,22 +25,23 @@ class SearchResultsPage extends React.Component {
     componentWillUpdate(nextProps) {
         let searchTerm = nextProps.location.search;
         searchTerm = searchTerm.slice(3, searchTerm.length);
-        if (this.props.searchTerm !== nextProps.searchTerm) this.search(searchTerm);
-
+        if (this.props.searchTerm !== nextProps.searchTerm)
+            this.search(searchTerm);
     }
 
     render() {
-        return(
+        return (
             <main>
                 <h2>Search Results Page</h2>
-                <div className = 'search-results-container'>
-                    {this.props.artistSearchResults.map((artist,index) => {
+                <Link className="link-button" to="/votes">See Votes!</Link>
+                <div className="search-results-container">
+                    {this.props.artistSearchResults.map((artist, index) => {
                         return (
                             <ArtistResult
-                                key = {artist.id}
-                                artistName = {artist.artistName}
-                                artistImage = {artist.artistImage}
-                                spotifyLink = {artist.spotifylink}
+                                key={artist.id}
+                                artistName={artist.artistName}
+                                artistImage={artist.artistImage}
+                                spotifyLink={artist.spotifylink}
                             />
                         );
                     })}
@@ -49,7 +49,6 @@ class SearchResultsPage extends React.Component {
             </main>
         );
     }
-
 }
 
-export default connect(container.allState)(SearchResultsPage)
+export default connect(container.allState)(SearchResultsPage);

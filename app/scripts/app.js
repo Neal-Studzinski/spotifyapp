@@ -8,6 +8,7 @@ import Login from "./components/login.js";
 import Header from "./components/header.js";
 import Homepage from "./components/home-page.js";
 import SearchResultsPage from "./components/search-results-page.js";
+import Votes from "./components/votes.js";
 
 export default function app() {
     render(
@@ -18,6 +19,7 @@ export default function app() {
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/votes" component={Votes} />
                     <Route
                         exact
                         path="/search-results"

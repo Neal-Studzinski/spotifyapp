@@ -20,6 +20,7 @@ class Signup extends React.Component {
         this.props.dispatch(
             signupNewUser(signupFullName, signupEmail, signupPassword)
         );
+        this.props.history.push("/header");
     }
 
     render() {
