@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
-import container from "../containers/all.js";
 import doSearch from "../actions/do-search.js";
+import container from "../containers/all.js";
 
 class Header extends React.Component {
     constructor(props) {
@@ -13,8 +13,8 @@ class Header extends React.Component {
 
     handleSearchClick(history) {
         if (this.refs.inputSearch.value) {
-            console.log("BUTTON CLICK: ", history);
-            let searchTerm = this.refs.inputSearch.value.split(" ").join("+");
+            //console.log("BUTTON CLICK: ", history);
+            let searchTerm = this.refs.inputSearch.value;
             this.props.dispatch({
                 type: "UPDATE_PATH_QUERY",
                 searchTerm: searchTerm,

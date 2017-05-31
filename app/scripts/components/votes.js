@@ -20,7 +20,7 @@ class Votes extends React.Component {
                 <h1> Header </h1>
                 <ul>
                     {this.getTheVotes()}
-                    {votes}
+
                 </ul>
             </div>
         );

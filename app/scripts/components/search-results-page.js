@@ -13,6 +13,17 @@ class SearchResultsPage extends React.Component {
     }
 
     search(searchTerm) {
+        // if ((searchTerm = "Katy Perry" || "katy perry")) {
+        //     let artistSearchResults = ;
+        // } else if ((searchTerm = "U2" || "u2")) {
+        //     let artistSearchResults = getState().artistSearchResultsU2;
+        // } else if ((searchTerm = "eminem" || "Eminem")) {
+        //     let artistSearchResults = getState().artistSearchResultsEM;
+        // } else if ((searchTerm = "Taylor Swift" || "taylor swift")) {
+        //     let artistSearchResults = getState().artistSearchResultsTS;
+        // } else if ((searchTerm = "tania bowra" || "Tania Bowra")) {
+        //     let artistSearchResults = getState().artistSearchResultsTB;
+        // }
         this.props.dispatch(doSearch(searchTerm));
     }
 
