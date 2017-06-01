@@ -1,5 +1,5 @@
-export default function saveVote(name, usertoken) {
-    console.log(name);
+export default function saveVote(id, name, image, usertoken) {
+    console.log(id, name, image, usertoken);
     return dispatch => {
         return $.ajax({
             type: "POST",
@@ -12,8 +12,8 @@ export default function saveVote(name, usertoken) {
                 "Content-Type": "application/json"
             },
             data: JSON.stringify({
-                // imgURL: image[0].url,
-                // spotifyId: id,
+                imgURL: image,
+                spotifyId: id,
                 spotifyName: name
             }),
             success: (data, status, xhr) => {

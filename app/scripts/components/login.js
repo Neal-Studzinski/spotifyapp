@@ -32,7 +32,7 @@ class Login extends React.Component {
                         type="text"
                         ref="loginEmail"
                         placeholder="@example.com"
-                        defaultValue="connor@example.com"
+                        defaultValue="user@example.com"
                     />
                     <input
                         className="text-input"

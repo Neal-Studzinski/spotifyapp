@@ -13,12 +13,12 @@ class ArtistResult extends React.Component {
 
     handleVoting(event) {
         event.preventDefault();
-
+        const id = this.props.id;
         const name = this.props.artistName;
-
+        const image = this.props.artistImage;
         const usertoken = this.props.usertoken;
-        this.props.dispatch(saveVote(name, usertoken));
-        console.log(name, usertoken);
+        this.props.dispatch(saveVote(id, name, image, usertoken));
+        console.log(name, usertoken, id);
     }
 
     render() {

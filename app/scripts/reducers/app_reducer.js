@@ -1245,13 +1245,13 @@ export default function AppReducer(currentState, action) {
             return Object.assign({}, currentState, {
                 artistSearchResults: action.artists
             });
-            //
-            // case "RETURN_VOTES":
-            //     console.log(action.votes);
-            //     var newState = {
-            //         votes: action.votes
-            //     };
-            //     return Object.assign({}, currentState, newState);
+
+        case "RETURN_VOTES":
+            console.log(action.votes);
+            var newState = {
+                votes: action.votes
+            };
+            return Object.assign({}, currentState, newState);
 
             console.log("Unhandled State!");
             return currentState;
