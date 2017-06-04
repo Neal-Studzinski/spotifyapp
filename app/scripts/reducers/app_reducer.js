@@ -1,5 +1,6 @@
 import doSearch from "../actions/do-search.js";
 import getVotes from "../actions/get_votes.js";
+import _ from "lodash";
 const initialState = {
     searchTerm: "",
     artistSearchResultsKP: [
@@ -1253,7 +1254,13 @@ export default function AppReducer(currentState, action) {
             };
             return Object.assign({}, currentState, newState);
 
-            console.log("Unhandled State!");
-            return currentState;
+        case "SORT_VOTES":
+            let votes = action.votes.data;
+            let groupedVotes = _.groupBy(votes, "spotifyName");
+            let sortedVotes = _.sortBy(groupedVotes, "length");
+
+            return Object.assign({}, currentState, {
+                votes: sortedVotes.reverse()
+            });
     }
 }

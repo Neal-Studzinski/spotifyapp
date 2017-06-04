@@ -5,11 +5,14 @@ import container from "../containers/all.js";
 import doSearch from "../actions/do-search.js";
 import ArtistResult from "./artist-result.js";
 import SearchResultsContainer from "./search-results-container.js";
+import getVotes from "../actions/get_votes.js";
+import Votes from "../components/votes.js";
 
 class SearchResultsPage extends React.Component {
     constructor(props) {
         super(props);
         this.search = this.search.bind(this);
+        this.handleVotes = this.handleVotes.bind(this);
     }
 
     search(searchTerm) {
@@ -29,11 +32,21 @@ class SearchResultsPage extends React.Component {
             this.search(searchTerm);
     }
 
+    handleVotes() {
+        this.props.dispatch(getVotes());
+        this.props.history.push("/votes");
+        //this.props.dispatch("/votes");
+        //to="/votes"
+    }
+
     render() {
         return (
             <main>
                 <h2>Search Results Page</h2>
-                <Link className="link-button" to="/votes">See Votes!</Link>
+                <button role="button" onClick={this.handleVotes}>
+                    View Votes
+                </button>
+
                 <div className="search-results-container">
                     {this.props.artistSearchResults.map((artist, index) => {
                         return (

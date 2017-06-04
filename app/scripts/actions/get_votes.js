@@ -10,8 +10,12 @@ export default function getVotes() {
             },
             success: (data, status, xhr) => {
                 console.log("here is the data", data);
+                // dispatch({
+                //     type: "RETURN_VOTES",
+                //     votes: data
+                // });
                 dispatch({
-                    type: "RETURN_VOTES",
+                    type: "SORT_VOTES",
                     votes: data
                 });
             },

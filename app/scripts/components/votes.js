@@ -9,16 +9,28 @@ class Votes extends React.Component {
         super(props);
     }
 
-    getTheVotes() {
-        this.props.dispatch(getVotes());
-        //console.log(data);
-    }
-
     render() {
         return (
             <div>
-                <h1> Header </h1>
-                <ul />
+                <h1> Top Voted Artists </h1>
+                <ul>
+                    {this.props.votes.map(votedArtist => {
+                        return (
+                            <li>
+                                <img
+                                    className="artist-image"
+                                    src={votedArtist[0].imgURL}
+                                />
+                                {" "}
+                                {votedArtist[0].spotifyName}
+                                {" "}
+                                -
+                                {" "}
+                                {votedArtist.length}
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         );
     }
